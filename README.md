@@ -248,7 +248,7 @@ MIT — см. / see [LICENSE](LICENSE)
 ## 👥 Авторы / Authors
 
 - **Попов Олег** ([@krams85](https://github.com/krams85))
-- **Иванов Сергей**
+- **Иванов Сергей** ([@TeppopucT93](https://github.com/TeppopucT93))
 
 ---
 
