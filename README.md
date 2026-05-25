@@ -6,11 +6,11 @@
 ![OSNet](https://img.shields.io/badge/ReID-OSNet_x1.0-purple)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-> 🇷🇺 [Русская версия](#-описание) | 🇬🇧 [English version](#-description)
+> 🇷🇺 RU [Русская версия](#-описание) | 🇺🇸 EN [English version](#-description)
 
 ---
 
-## 🇷🇺 Описание
+## 🇷🇺 RU Описание
 
 Система автоматически отслеживает движение багажа между стойками регистрации и лентами сортировки в аэропорту в реальном времени.
 
@@ -29,7 +29,7 @@
 
 ---
 
-## 🇬🇧 Description
+## 🇺🇸 EN Description
 
 Automatically tracks luggage between check-in desks and sorting belts across multiple cameras in real time.
 
@@ -50,7 +50,7 @@ Dark-themed PyQt5 interface with live video tiles, analytics, camera management,
 
 ## ✨ Возможности / Features
 
-| 🇷🇺 | 🇬🇧 |
+| 🇷🇺 RU | 🇺🇸 EN |
 |---|---|
 | Детекция: YOLOv8 / YOLOv11 (nano/small/medium), пользовательские классы | Detection: YOLOv8 / YOLOv11 (nano/small/medium), custom class IDs |
 | Трекинг: BoT-SORT, ByteTrack, StrongSORT | Tracking: BoT-SORT, ByteTrack, StrongSORT |
