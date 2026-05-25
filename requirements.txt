@@ -1,0 +1,35 @@
+# Airport Baggage Tracker v2 — зависимости
+# Установка: pip install -r requirements.txt
+#
+# ВАЖНО: torchreid ставится отдельно (нет нормального релиза на PyPI):
+#   pip install git+https://github.com/KaiyangZhou/deep-person-reid.git --no-build-isolation
+# Остальное: pip install -r requirements.txt
+#
+# ── Выбор onnxruntime ────────────────────────────────────────────────────────
+# Рекомендуется (NVIDIA GPU):   pip install onnxruntime-gpu
+# Только CPU:                   pip install onnxruntime
+# При DLL-конфликте:
+#   pip uninstall onnxruntime-gpu onnxruntime -y && pip install onnxruntime
+
+# ── Основные ────────────────────────────────────────────────────────────────
+ultralytics>=8.2.0        # YOLOv8/11 + BoT-SORT / ByteTrack
+opencv-python>=4.9.0      # RTSP-захват и обработка кадров
+PyQt5>=5.15.9             # GUI-фреймворк
+pyqtgraph>=0.13.0         # графики аналитики (опционально)
+PyYAML>=6.0               # конфиг-файлы
+numpy>=1.24               # массивы
+aiohttp>=3.9.0            # веб-дашборд (localhost:8765)
+openpyxl>=3.1.0           # экспорт отчётов в Excel
+
+# ── ReID (OSNet x1.0) — зависимости torchreid ───────────────────────────────
+gdown>=4.6.0              # скачивает веса OSNet при первом запуске
+tensorboard>=2.10.0       # импортируется внутри torchreid.reid.engine
+Cython>=0.29              # ускоряет ранжирование метрик (опционально)
+
+# ── ONNX Runtime (движок ReID — значительно снижает CPU-нагрузку) ──────────
+# Пакет `onnx` НЕ нужен — ONNX-файл (osnet_x1_0_256x128.onnx) поставляется
+# готовым. Если нужно переэкспортировать вручную: pip install onnx
+# (onnx распаковывает длинные пути — включите Long Path Support в Windows)
+#
+# GPU (NVIDIA):  pip install onnxruntime-gpu
+# CPU:           pip install onnxruntime

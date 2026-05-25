@@ -1,0 +1,102 @@
+cameras:
+- name: Check-in Desk 1
+  cam_id: 1
+  counter_id: 1
+  mode: file               # file | rtsp
+  rtsp_url: ''
+  file_path: ''            # укажите путь к видеофайлу или RTSP URL
+  loop_video: true
+  enabled: true
+  role: source             # source | query | transit
+  receives_from: null
+  roi: null
+- name: Sorting Belt 1
+  cam_id: 2
+  counter_id: 1
+  mode: file
+  rtsp_url: ''
+  file_path: ''
+  loop_video: true
+  enabled: true
+  role: query
+  receives_from: 1         # cam_id источника (source-камеры)
+  roi: null
+model:
+  path: yolo11n.pt
+  tracking_config: botsort.yaml
+  # Альтернативы: strongsort.yaml (лучше при окклюзиях), bytetrack.yaml (быстрее)
+  confidence: 0.4
+  iou: 0.5
+  classes:
+  - 24   # backpack
+  - 26   # handbag
+  - 28   # suitcase
+  custom_class_names: {}
+  device: auto
+  yolo_device: auto
+  yolo_half: false
+  reid_engine: onnx_gpu    # onnx_gpu | onnx_cpu | pytorch
+  reid_device: auto
+  reid_half: false
+  half: false
+  infer_every_n: 2
+  infer_imgsz: 640
+  display_fps_limit: 25
+  display_width: 0
+dataset:
+  yolo_images_dir: Dataset/datasetyolo/images
+  yolo_labels_dir: Dataset/datasetyolo/labels
+  reid_dir: Dataset/datasetReID
+  yolo_save_every_n_frames: 5
+  reid_save_every_k_detections: 3
+reid_model_path: ''
+reconnect_delay: 5.0
+app_mode: production       # production | training
+reid_every_n: 3
+reid_batch_crops: true
+track_min_hits: 2
+track_max_age: 30
+motion_detect: false
+motion_min_area: 1000
+reid_embedding_cache: true
+reid_ttl_minutes: 7.0
+reid_threshold: 0.68
+reid_verdict_high: 0.82
+reid_verdict_mid: 0.68
+reid_min_crop_px: 50
+crop_pad: 0.15
+reid_aggregation: mean
+reid_max_db_size: 0
+reid_top_k: 5
+reid_min_age_sec: 3.0
+reid_vote_threshold: 0.65
+reid_min_votes: 3
+reid_vote_every_n: 5
+reid_adaptive_threshold: true
+reid_adaptive_max_boost: 0.08
+transit_time_hint: 0.0
+color_prefilter_threshold: 0.08
+reid_db_path: ''
+reid_autosave_interval: 0
+overlay_bbox: true
+overlay_track_id: true
+overlay_conf: true
+overlay_class: true
+web_port: 8765
+stream_buffer: 1
+decode_device: auto
+roi_crop_infer: true
+snapshot_on_match: false
+snapshots_dir: Snapshots
+train_epochs: 100
+train_batch: 8
+train_imgsz: 640
+train_lr0: 0.01
+train_patience: 50
+train_device: '0'
+train_workers: 2
+train_project: runs/train
+shared_yolo: false
+training_link_timeout: 60.0
+training_save_interval: 0.3
+training_bag_cooldown: 1.0
